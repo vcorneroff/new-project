@@ -9,4 +9,4 @@
 6. Check what was committed (or changed) using: `git diff`
 7. If everything looks correct, push your changes to the remote repository and create a merge request:  
    `git push --set-upstream origin YOUR_BRANCH_NAME`
-8. After the push is done, Git will provide a link for the merge request. Open it and follow the instructions on the web page.
+8. After the push is done, Git will provide a repo link. Open it and check changes.
