@@ -1,0 +1,25 @@
+#!/bin/bash
+
+# A simple kubectl plugin to output CPU and memory statistics
+# Example: kubectl pod-top kube-system pods
+
+set -e
+
+# Parameters check
+if [[ $# -ne 2 ]]; then
+  echo "Usage: kubectl kubeplugin <namespace> <resource_type>"
+  echo "Example: kubectl kubeplugin kube-system pods"
+  exit 1
+fi
+
+NAMESPACE=$1
+RESOURCE_TYPE=$2
+
+# Head
+echo "Resource,Namespace,Name,CPU,Memory"
+
+# Get statistics
+kubectl top $RESOURCE_TYPE -n "$NAMESPACE" --no-headers | while read -r NAME CPU MEMORY _; do
+  echo "$RESOURCE_TYPE,$NAMESPACE,$NAME,$CPU,$MEMORY"
+done
+
